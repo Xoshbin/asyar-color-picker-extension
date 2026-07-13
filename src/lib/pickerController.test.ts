@@ -34,8 +34,8 @@ function makeNotifications() {
   return {
     checkPermission: vi.fn(async () => true),
     requestPermission: vi.fn(async () => true),
-    send: vi.fn(async () => 'notif-1'),
-    dismiss: vi.fn(async () => undefined),
+    sendBackground: vi.fn(async () => 'notif-1'),
+    dismissBackground: vi.fn(async () => undefined),
   };
 }
 
@@ -143,7 +143,7 @@ describe('PickerController — pickViaTray', () => {
     (deps.statusBar.updateItem as any).mockClear();
     await ctrl.pickViaTray();
     expect(deps.statusBar.updateItem).not.toHaveBeenCalled();
-    expect(deps.notifications.send).not.toHaveBeenCalled();
+    expect(deps.notifications.sendBackground).not.toHaveBeenCalled();
   });
 
   it('appends to history, refreshes the tray, and sends a notification on success', async () => {
@@ -156,7 +156,7 @@ describe('PickerController — pickViaTray', () => {
     const stored = JSON.parse((deps.storage.set as any).mock.calls[0][1]);
     expect(stored[0]).toMatchObject({ hex: '#ff0000', id: 'id-1' });
 
-    expect(deps.notifications.send).toHaveBeenCalledWith(
+    expect(deps.notifications.sendBackground).toHaveBeenCalledWith(
       expect.objectContaining({ body: expect.stringContaining('#ff0000') }),
     );
   });
@@ -189,7 +189,7 @@ describe('PickerController — pickViaTray', () => {
 
     await expect(ctrl.pickViaTray()).resolves.toBeUndefined();
     expect(deps.log.error).toHaveBeenCalledTimes(1);
-    expect(deps.notifications.send).not.toHaveBeenCalled();
+    expect(deps.notifications.sendBackground).not.toHaveBeenCalled();
   });
 
   it('catches a rejected storage write mid-flow and logs it instead of throwing/rejecting', async () => {

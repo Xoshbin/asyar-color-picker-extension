@@ -17,7 +17,7 @@ import type {
   IStorageService,
   IStatusBarService,
   IScreenService,
-  INotificationService,
+  IFeedbackService,
 } from 'asyar-sdk/contracts';
 import manifest from '../manifest.json';
 import { PickerController, type PreferencesView } from './lib/pickerController';
@@ -38,7 +38,7 @@ const controller = new PickerController({
   storage: workerContext.getService<IStorageService>('storage'),
   statusBar: workerContext.getService<IStatusBarService>('statusBar'),
   screen: workerContext.getService<IScreenService>('screen'),
-  notifications: workerContext.getService<INotificationService>('notifications'),
+  notifications: workerContext.getService<IFeedbackService>('feedback'),
   preferences: workerContext.preferences as PreferencesView,
   log,
   createCanvas: () => document.createElement('canvas') as unknown as CanvasLike,

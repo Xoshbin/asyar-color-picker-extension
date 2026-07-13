@@ -1,7 +1,7 @@
 import type {
   IStatusBarService,
   IScreenService,
-  INotificationService,
+  IFeedbackService,
   ILogService,
 } from 'asyar-sdk/contracts';
 import { loadHistory, prependHistory } from './history';
@@ -28,7 +28,7 @@ export interface PickerControllerDeps {
   storage: StorageView;
   statusBar: IStatusBarService;
   screen: IScreenService;
-  notifications: INotificationService;
+  notifications: IFeedbackService;
   preferences: PreferencesView;
   log: ILogService;
   createCanvas: () => CanvasLike;
@@ -129,7 +129,7 @@ export class PickerController {
       await prependHistory(this.deps.storage as any, entry, this.historyLimit());
       await this.refreshTray();
 
-      await this.deps.notifications.send({
+      await this.deps.notifications.sendBackground({
         title: 'Color Picker',
         body: `Picked ${picked.hex} — open Color History to copy it.`,
       });

@@ -38,7 +38,7 @@ const PERMISSION_FOR_API: Record<string, string> = {
   'storage\\.get\\(|storage\\.getAll\\(': 'storage:read',
   'storage\\.set\\(|storage\\.delete\\(': 'storage:write',
   'preferences\\.refresh\\??\\.?\\(': 'preferences:read',
-  'notifications\\.send\\(': 'notifications:send',
+  'notifications\\.sendBackground\\(': 'notifications:send',
   'interop\\.launchCommand\\(': 'extension:invoke',
 };
 
