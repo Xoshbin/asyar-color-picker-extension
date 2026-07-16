@@ -1,11 +1,11 @@
 {
   "id": "org.asyar.color-picker",
   "name": "Color Picker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cross-platform screen color picker with format conversion, contrast checking, and AI color tools.",
   "author": "Asyar",
   "icon": "🎨",
-  "asyarSdk": "^4.0.0",
+  "asyarSdk": "^4.3.0",
   "searchable": true,
   "permissions": [
     "screen:pick-color",
@@ -24,13 +24,34 @@
       "description": "Format used when a picked color is copied to the clipboard.",
       "default": "hex",
       "data": [
-        { "value": "hex", "title": "HEX" },
-        { "value": "rgb", "title": "RGB" },
-        { "value": "hsl", "title": "HSL" },
-        { "value": "hsb", "title": "HSB" },
-        { "value": "oklch", "title": "OKLCH" },
-        { "value": "lch", "title": "LCH" },
-        { "value": "p3", "title": "Display P3" }
+        {
+          "value": "hex",
+          "title": "HEX"
+        },
+        {
+          "value": "rgb",
+          "title": "RGB"
+        },
+        {
+          "value": "hsl",
+          "title": "HSL"
+        },
+        {
+          "value": "hsb",
+          "title": "HSB"
+        },
+        {
+          "value": "oklch",
+          "title": "OKLCH"
+        },
+        {
+          "value": "lch",
+          "title": "LCH"
+        },
+        {
+          "value": "p3",
+          "title": "Display P3"
+        }
       ]
     },
     {
