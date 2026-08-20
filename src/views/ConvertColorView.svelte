@@ -102,7 +102,6 @@
     input = (data.payload as { query?: string } | undefined)?.query ?? '';
   }
 
-  const ACTION_IDS: string[] = [];
   let unsyncPrefs: (() => void) | null = null;
 
   onMount(() => {
@@ -118,7 +117,6 @@
 
     for (const format of FORMATS) {
       const id = `${extensionId}.convert.copy-${format}`;
-      ACTION_IDS.push(id);
       actions.registerAction({
         id,
         title: `Copy as ${FORMAT_LABEL[format]}`,
@@ -135,7 +133,6 @@
     }
 
     const nameId = `${extensionId}.convert.ai-name`;
-    ACTION_IDS.push(nameId);
     actions.registerAction({
       id: nameId,
       title: 'AI: Name This Color',
@@ -146,7 +143,6 @@
     });
 
     const paletteId = `${extensionId}.convert.ai-palette`;
-    ACTION_IDS.push(paletteId);
     actions.registerAction({
       id: paletteId,
       title: 'AI: Generate Palette',
@@ -161,13 +157,6 @@
     window.removeEventListener('message', handleHostMessage);
     unsyncPrefs?.();
     extensionManager?.setActiveViewActionLabel(null);
-    for (const id of ACTION_IDS) {
-      try {
-        actions.unregisterAction(id);
-      } catch {
-        /* ignore */
-      }
-    }
   });
 </script>
 

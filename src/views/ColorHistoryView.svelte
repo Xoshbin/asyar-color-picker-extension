@@ -92,7 +92,6 @@
     else if (key === 'ArrowUp' || key === 'ArrowLeft') moveSelection(-1);
   }
 
-  const ACTION_IDS: string[] = [];
   let unsyncPrefs: (() => void) | null = null;
 
   onMount(() => {
@@ -111,7 +110,6 @@
 
     for (const format of FORMATS) {
       const id = `${extensionId}.history.copy-${format}`;
-      ACTION_IDS.push(id);
       actions.registerAction({
         id,
         title: `Copy as ${FORMAT_LABEL[format]}`,
@@ -132,7 +130,6 @@
     }
 
     const favId = `${extensionId}.history.toggle-favorite`;
-    ACTION_IDS.push(favId);
     actions.registerAction({
       id: favId,
       title: 'Toggle Favorite',
@@ -149,7 +146,6 @@
     });
 
     const delId = `${extensionId}.history.delete`;
-    ACTION_IDS.push(delId);
     actions.registerAction({
       id: delId,
       title: 'Delete',
@@ -168,7 +164,6 @@
     });
 
     const clearId = `${extensionId}.history.clear-all`;
-    ACTION_IDS.push(clearId);
     actions.registerAction({
       id: clearId,
       title: 'Clear All (keeps favorites)',
@@ -187,13 +182,6 @@
     unsyncPrefs?.();
     window.removeEventListener('message', handleHostMessage);
     extensionManager?.setActiveViewSubtitle(null);
-    for (const id of ACTION_IDS) {
-      try {
-        actions.unregisterAction(id);
-      } catch {
-        /* ignore */
-      }
-    }
   });
 </script>
 
