@@ -149,7 +149,6 @@
     actions.registerAction({
       id: delId,
       title: 'Delete',
-      shortcut: '⌘⌫',
       category: 'Edit',
       extensionId,
       context: ActionContext.EXTENSION_VIEW,
