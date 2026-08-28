@@ -1,7 +1,7 @@
 {
   "id": "org.asyar.color-picker",
   "name": "Color Picker",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Cross-platform screen color picker with format conversion, contrast checking, and AI color tools.",
   "author": "Asyar",
   "icon": "🎨",

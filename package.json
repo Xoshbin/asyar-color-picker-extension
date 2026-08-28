@@ -1,6 +1,6 @@
 {
   "name": "org.asyar.color-picker",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Cross-platform screen color picker with format conversion, contrast checking, and AI color tools.",
   "type": "module",
   "scripts": {
