@@ -94,7 +94,7 @@ export async function runPickFlow(deps: PickFlowDeps): Promise<PickedColor | nul
     const history = await loadHistory(deps.storage as any);
     const recent = history.slice(0, RECENT_ROWS);
     const swatchIconPath = recent[0]
-      ? createSwatchIconDataUri(recent[0].hex, deps.createCanvas)
+      ? await createSwatchIconDataUri(recent[0].hex, deps.createCanvas)
       : null;
     const item = renderTrayMenu({ swatchIconPath, recent }, { trayIconEnabled: true });
     if (item) deps.statusBar.registerItem(item);

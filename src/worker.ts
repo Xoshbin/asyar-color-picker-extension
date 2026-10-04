@@ -6,10 +6,7 @@
 // worker never routes a user command through executeCommand().
 // ───────────────────────────────────────────────────────────────────────────
 
-import {
-  ExtensionContext as WorkerExtensionContext,
-  extensionBridge,
-} from 'asyar-sdk/worker';
+import { ExtensionContext as WorkerExtensionContext, extensionBridge } from 'asyar-sdk/worker';
 import type {
   Extension,
   ExtensionContext,
@@ -23,11 +20,7 @@ import manifest from '../manifest.json';
 import { PickerController, type PreferencesView } from './lib/pickerController';
 import type { CanvasLike } from './lib/swatchIcon';
 
-const extensionId =
-  window.location.hostname === 'localhost' ||
-  window.location.hostname === 'asyar-extension.localhost'
-    ? window.location.pathname.split('/').filter(Boolean)[0] || 'org.asyar.color-picker'
-    : window.location.hostname || 'org.asyar.color-picker';
+const extensionId = manifest.id;
 
 const workerContext = new WorkerExtensionContext();
 workerContext.setExtensionId(extensionId);
@@ -41,7 +34,7 @@ const controller = new PickerController({
   notifications: workerContext.getService<IFeedbackService>('feedback'),
   preferences: workerContext.preferences as PreferencesView,
   log,
-  createCanvas: () => document.createElement('canvas') as unknown as CanvasLike,
+  createCanvas: () => new OffscreenCanvas(32, 32) as unknown as CanvasLike,
   now: () => Date.now(),
   genId: () => crypto.randomUUID(),
 });
@@ -85,9 +78,5 @@ void (async () => {
     log.error(`[${extensionId}] worker activate failed: ${msg}`);
   }
 })();
-
-window.addEventListener('beforeunload', () => {
-  void colorPickerExtension.deactivate();
-});
 
 export { controller as pickerController };

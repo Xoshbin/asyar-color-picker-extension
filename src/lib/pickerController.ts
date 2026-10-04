@@ -86,7 +86,7 @@ export class PickerController {
     const history = await loadHistory(this.deps.storage as any);
     const recent = history.slice(0, RECENT_ROWS);
     const swatchIconPath = recent[0]
-      ? createSwatchIconDataUri(recent[0].hex, this.deps.createCanvas)
+      ? await createSwatchIconDataUri(recent[0].hex, this.deps.createCanvas)
       : null;
 
     const item = renderTrayMenu({ swatchIconPath, recent }, { trayIconEnabled: true });
@@ -134,7 +134,9 @@ export class PickerController {
         body: `Picked ${picked.hex} — open Color History to copy it.`,
       });
     } catch (err) {
-      this.deps.log.error(`pickViaTray failed: ${err instanceof Error ? err.message : String(err)}`);
+      this.deps.log.error(
+        `pickViaTray failed: ${err instanceof Error ? err.message : String(err)}`,
+      );
     }
   }
 }
