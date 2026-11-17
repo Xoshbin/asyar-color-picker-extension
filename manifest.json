@@ -87,7 +87,6 @@
       "id": "pick-color",
       "name": "Pick Color",
       "description": "Sample any pixel on screen and copy it in your default format",
-      "icon": "🎨",
       "mode": "view",
       "component": "PickColorView"
     },
@@ -95,7 +94,6 @@
       "id": "color-history",
       "name": "Color History",
       "description": "Browse, search, favorite, and copy previously picked colors",
-      "icon": "🕘",
       "mode": "view",
       "component": "ColorHistoryView"
     },
