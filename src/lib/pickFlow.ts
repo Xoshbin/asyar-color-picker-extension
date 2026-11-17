@@ -77,7 +77,7 @@ export async function runPickFlow(deps: PickFlowDeps): Promise<PickedColor | nul
     createdAt: deps.now(),
     favorite: false,
   });
-  await deps.showHUD(`Copied ${formatted}`);
+  await deps.showHUD(`Picked ${picked.hex}`);
 
   const entry: HistoryEntry = {
     id: deps.genId(),

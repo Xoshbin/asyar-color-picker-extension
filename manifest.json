@@ -14,8 +14,12 @@
     "storage:write",
     "preferences:read",
     "notifications:send",
-    "extension:invoke"
+    "extension:invoke",
+    "shell:open-url"
   ],
+  "permissionArgs": {
+    "shell:open-url": ["x-apple.systempreferences"]
+  },
   "preferences": [
     {
       "name": "defaultFormat",

@@ -40,6 +40,7 @@ const PERMISSION_FOR_API: Record<string, string> = {
   'preferences\\.refresh\\??\\.?\\(': 'preferences:read',
   'notifications\\.sendBackground\\(': 'notifications:send',
   'interop\\.launchCommand\\(': 'extension:invoke',
+  'opener\\.openUrl\\(': 'shell:open-url',
 };
 
 describe('manifest permissions contract', () => {
