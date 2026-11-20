@@ -109,5 +109,11 @@
   "type": "extension",
   "background": {
     "main": "dist/worker.js"
-  }
+  },
+  "category": "design-tools",
+  "platforms": [
+    "macos",
+    "windows",
+    "linux"
+  ]
 }
